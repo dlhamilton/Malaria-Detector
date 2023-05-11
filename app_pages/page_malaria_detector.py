@@ -27,7 +27,8 @@ def page_malaria_detector_body():
                                         type='png',accept_multiple_files=True)
    
     if images_buffer is not None:
-        df_report = pd.DataFrame([])
+        # df_report = pd.DataFrame([])
+        df_report = pd.DataFrame(columns=["Name", "Result"])
         for image in images_buffer:
 
             img_pil = (Image.open(image))
@@ -40,8 +41,10 @@ def page_malaria_detector_body():
             pred_proba, pred_class = load_model_and_predict(resized_img, version=version)
             plot_predictions_probabilities(pred_proba, pred_class)
 
-            df_report = df_report.append({"Name":image.name, 'Result': pred_class },
-                                        ignore_index=True)
+            # df_report = df_report.append({"Name":image.name, 'Result': pred_class },
+                                        # ignore_index=True)
+            df_report.loc[len(df_report)] = {"Name": image.name, 'Result': pred_class}
+
         
         if not df_report.empty:
             st.success("Analysis Report")
