@@ -1,4 +1,4 @@
-# Exclude test files and directories
+<!-- # Exclude test files and directories
 tests/
 **/*.test.py
 
@@ -32,7 +32,7 @@ build/
 *.vscode/
 .idea/
 *.vim
-*.tmux
+*.tmux -->
 
 inputs/malaria_dataset/cell_images/Parasitized
 inputs/malaria_dataset/cell_images/Uninfected
